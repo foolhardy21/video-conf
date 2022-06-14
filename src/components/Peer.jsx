@@ -1,21 +1,20 @@
 import { useVideo } from "@100mslive/react-sdk";
+import styles from './peer.module.css'
 
 function Peer({ peer }) {
     const { videoRef } = useVideo({
         trackId: peer.videoTrack
     });
     return (
-        <div className="peer-container">
+        <div>
             <video
                 ref={videoRef}
-                className={`peer-video ${peer.isLocal ? "local" : ""}`}
                 autoPlay
                 muted
                 playsInline
+                className={`${styles.cardVideo} brd-md`}
             />
-            <div className="peer-name">
-                {peer.name} {peer.isLocal ? "(You)" : ""}
-            </div>
+            <p className="txt-primary txt-md txt-cap txt-500">{peer.name} {peer.isLocal ? "(You)" : ""}</p>
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useHMSStore, selectIsConnectedToRoom, useHMSActions } from "@100mslive/react-sdk";
 import { Conference, Footer, JoinForm } from './components'
+import styles from './app.module.css'
 
 function App() {
   const hmsActions = useHMSActions();
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <div className="flx flx-column">
-      <p className="txt-xlg txt-primary txt-ucase txt-500 pd-md">joinin</p>
+      <p className={`txt-xlg txt-primary txt-ucase txt-500 pd-md mg-btm-md ${styles.header}`}>joinin</p>
       {
         isConnected ?
           <>
