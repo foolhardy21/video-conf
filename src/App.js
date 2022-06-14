@@ -13,11 +13,20 @@ function App() {
   }, [hmsActions]);
 
   return (
-    <>
+    <div className="flx flx-column">
+      <p className="txt-xlg txt-primary txt-ucase txt-500 pd-md">joinin</p>
       {
-        isConnected ? <><Conference /><Footer /></> : <JoinForm />
+        isConnected ?
+          <>
+            <Conference />
+            <Footer />
+          </> :
+          <div className="flx flx-center">
+            <JoinForm />
+          </div>
+
       }
-    </>
+    </div>
   );
 }
 

@@ -5,7 +5,6 @@ function JoinForm() {
     const hmsActions = useHMSActions();
     const [inputValues, setInputValues] = useState({
         name: "",
-        token: ""
     });
 
     const handleInputChange = (e) => {
@@ -19,36 +18,23 @@ function JoinForm() {
         e.preventDefault();
         hmsActions.join({
             userName: inputValues.name,
-            authToken: inputValues.token
+            authToken: process.env.REACT_APP_GUEST_KEY
         });
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Join Room</h2>
-            <div className="input-container">
-                <input
-                    required
-                    value={inputValues.name}
-                    onChange={handleInputChange}
-                    id="name"
-                    type="text"
-                    name="name"
-                    placeholder="Your name"
-                />
-            </div>
-            <div className="input-container">
-                <input
-                    required
-                    value={inputValues.token}
-                    onChange={handleInputChange}
-                    id="token"
-                    type="text"
-                    name="token"
-                    placeholder="Auth token"
-                />
-            </div>
-            <button className="btn-primary">Join</button>
+        <form className="card-dim card-shadow-xs flx flx-column flx-center pd-xlg" onSubmit={handleSubmit}>
+            <p className="txt-lg txt-primary txt-cap mg-btm-lg">join the room</p>
+            <input
+                required
+                value={inputValues.name}
+                onChange={handleInputChange}
+                name="name"
+                type="text"
+                placeholder="enter your name"
+                className="input input-s txt-md pd-xs mg-btm-s"
+            />
+            <button className="btn-solid txt-secondary bg-secondary txt-md txt-cap pd-xs">join as guest</button>
         </form>
     );
 }
